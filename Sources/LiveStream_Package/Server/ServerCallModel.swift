@@ -8,19 +8,27 @@
 import Foundation
 
 import UIKit
+import Alamofire
 
 public struct ServerCallModel {
 
-    let serverCallModel = ServerCallModel()
+    static let shared = ServerCallModel()
 
     public init() {
         
     }
     
-    //MARK:- Create Live Streaming
-    public func createLiveStreamingCall(completion: @escaping (NSDictionary) -> Void) {
-        apiCallHelper.call_Create_Live_Streaming { response in
-            completion(response)
-        }
+    //MARK:- Fetch all streams API Call
+    func getAllStreams(completion : @escaping (NSArray) -> Void) {
+        let url = "\(baseUrl)ls"
+        AF.request(url)
+            .responseJSON { (response) in
+                if let response = response.value {
+                    let dataArray = ((response as! NSDictionary).object(forKey: "data") as! NSArray)
+                    completion(dataArray)
+                } else {
+                    print(response.error.debugDescription)
+                }
+            }
     }
 }
