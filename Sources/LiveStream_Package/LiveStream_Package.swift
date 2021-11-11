@@ -7,7 +7,8 @@ public struct LiveStream_Package {
     public init() {
     }
     
-    public func getStreams(searchValue : String,  completion: @escaping (NSArray) -> Void)
+    //MARK:- get all stream
+    public func getStreams(completion: @escaping (NSArray) -> Void)
     {
         LiveStreamViewModel.shared.getStreams(completion: {responseArray in
             completion(responseArray)
