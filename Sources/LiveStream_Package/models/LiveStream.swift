@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Livestream {
+public struct Livestream {
     var title : String
     var isLivestreamActive : Bool
     var bannersUrlArray : String
@@ -22,7 +22,7 @@ struct Livestream {
     
 }
 
-struct Upcomingstream {
+public struct Upcomingstream {
     var title : String
     var isLivestreamActive : Bool
     var bannersUrlArray : String
@@ -36,7 +36,7 @@ struct Upcomingstream {
     var ls_uuid : String
 }
 
-struct LivestreamProduct {
+public struct LivestreamProduct {
     var imagesUrlArray : [String]
     var starRating : String
     var productAttributes : ProductAttributes
@@ -49,7 +49,7 @@ struct LivestreamProduct {
     
 }
 
-struct ProductAttributes {
+public struct ProductAttributes {
     var productUnitPrice : String
     var productUnit : String
     var productTotalQty : String
