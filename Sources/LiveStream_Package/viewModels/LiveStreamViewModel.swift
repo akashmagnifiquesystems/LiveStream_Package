@@ -25,48 +25,48 @@ class LiveStreamViewModel {
     }
     
     //MARK:- Binding data for listing
-    func getStreams(SearchValue : String, completion: @escaping ([Livestream], [Upcomingstream]) -> Void)
+    func getStreams(SearchValue : String, completion: @escaping (NSArray) -> Void)
     {
         KRProgressHUD.show()
         ServerCallModel.shared.getAllStreams { responseArray in
-            self.livestreams = []
-            self.upcomingstreams = []
-            
-            for i in 0 ..< responseArray.count
-            {
-                let model = (responseArray.object(at: i) as! NSDictionary)
-                if (model.object(forKey: "ls_scheduled_date") as! NSNumber) == 0
-                {
-                    //Filter Live stream
-                    self.livestreams.append(contentsOf: [Livestream(title: (model.object(forKey: "ls_title") as! String),
-                                                                    isLivestreamActive: (model.object(forKey: "is_livestream_active") as? Bool ?? false),
-                                                                    bannersUrlArray: ((model.object(forKey: "ls_banners_url_array") as! NSArray).object(at: 0) as! String),
-                                                                    description: (model.object(forKey: "ls_description") as! String),
-                                                                    currentViewers: (model.object(forKey: "current_viewers") as! NSNumber),
-                                                                    timeStamp: Converter.shared.convertTime(timeStamp: (model.object(forKey: "ls_scheduled_date") as! Int)),
-                                                                    ls_broadcaster_primary_store: (model.object(forKey: "ls_broadcaster_primary_store") as! NSDictionary),
-                                                                    ls_broadcaster: (model.object(forKey: "ls_broadcaster") as! NSDictionary),
-                                                                    ls_products: self.filterProductData(productArray: (model.object(forKey: "ls_products") as! NSArray)),
-                                                                    current_viewers:  "\(Int(truncating: model.object(forKey: "current_viewers") as! NSNumber).roundedWithAbbreviations)",
-                                                                    ls_uuid: (model.object(forKey: "ls_uuid") as! String))])
-                }else{
-                    //Filter Upcoming Stream
-                    self.upcomingstreams.append(contentsOf: [Upcomingstream(title: (model.object(forKey: "ls_title") as! String),
-                                                                            isLivestreamActive: (model.object(forKey: "is_livestream_active") as? Bool ?? false),
-                                                                            bannersUrlArray: ((model.object(forKey: "ls_banners_url_array") as! NSArray).object(at: 0) as! String),
-                                                                            description: (model.object(forKey: "ls_description") as! String),
-                                                                            currentViewers: (model.object(forKey: "current_viewers") as! NSNumber),
-                                                                            timeStamp:  Converter.shared.convertTime(timeStamp: (model.object(forKey: "ls_scheduled_date") as! Int)),
-                                                                            ls_broadcaster_primary_store: (model.object(forKey: "ls_broadcaster_primary_store") as! NSDictionary),
-                                                                            ls_broadcaster: (model.object(forKey: "ls_broadcaster") as! NSDictionary),
-                                                                            ls_products: self.filterProductData(productArray:(model.object(forKey: "ls_products") as! NSArray)),
-                                                                            current_viewers: "\(Int(truncating: model.object(forKey: "current_viewers") as! NSNumber).roundedWithAbbreviations)",
-                                                                            ls_uuid: (model.object(forKey: "ls_uuid") as! String))])
-                }
-            }
+//            self.livestreams = []
+//            self.upcomingstreams = []
+//            
+//            for i in 0 ..< responseArray.count
+//            {
+//                let model = (responseArray.object(at: i) as! NSDictionary)
+//                if (model.object(forKey: "ls_scheduled_date") as! NSNumber) == 0
+//                {
+//                    //Filter Live stream
+//                    self.livestreams.append(contentsOf: [Livestream(title: (model.object(forKey: "ls_title") as! String),
+//                                                                    isLivestreamActive: (model.object(forKey: "is_livestream_active") as? Bool ?? false),
+//                                                                    bannersUrlArray: ((model.object(forKey: "ls_banners_url_array") as! NSArray).object(at: 0) as! String),
+//                                                                    description: (model.object(forKey: "ls_description") as! String),
+//                                                                    currentViewers: (model.object(forKey: "current_viewers") as! NSNumber),
+//                                                                    timeStamp: Converter.shared.convertTime(timeStamp: (model.object(forKey: "ls_scheduled_date") as! Int)),
+//                                                                    ls_broadcaster_primary_store: (model.object(forKey: "ls_broadcaster_primary_store") as! NSDictionary),
+//                                                                    ls_broadcaster: (model.object(forKey: "ls_broadcaster") as! NSDictionary),
+//                                                                    ls_products: self.filterProductData(productArray: (model.object(forKey: "ls_products") as! NSArray)),
+//                                                                    current_viewers:  "\(Int(truncating: model.object(forKey: "current_viewers") as! NSNumber).roundedWithAbbreviations)",
+//                                                                    ls_uuid: (model.object(forKey: "ls_uuid") as! String))])
+//                }else{
+//                    //Filter Upcoming Stream
+//                    self.upcomingstreams.append(contentsOf: [Upcomingstream(title: (model.object(forKey: "ls_title") as! String),
+//                                                                            isLivestreamActive: (model.object(forKey: "is_livestream_active") as? Bool ?? false),
+//                                                                            bannersUrlArray: ((model.object(forKey: "ls_banners_url_array") as! NSArray).object(at: 0) as! String),
+//                                                                            description: (model.object(forKey: "ls_description") as! String),
+//                                                                            currentViewers: (model.object(forKey: "current_viewers") as! NSNumber),
+//                                                                            timeStamp:  Converter.shared.convertTime(timeStamp: (model.object(forKey: "ls_scheduled_date") as! Int)),
+//                                                                            ls_broadcaster_primary_store: (model.object(forKey: "ls_broadcaster_primary_store") as! NSDictionary),
+//                                                                            ls_broadcaster: (model.object(forKey: "ls_broadcaster") as! NSDictionary),
+//                                                                            ls_products: self.filterProductData(productArray:(model.object(forKey: "ls_products") as! NSArray)),
+//                                                                            current_viewers: "\(Int(truncating: model.object(forKey: "current_viewers") as! NSNumber).roundedWithAbbreviations)",
+//                                                                            ls_uuid: (model.object(forKey: "ls_uuid") as! String))])
+//                }
+//            }
 //            self.liveStreamFilter(searchText: SearchValue)
             KRProgressHUD.dismiss()
-            completion(self.livestreams,self.upcomingstreams)
+            completion(responseArray)
             //            if UserDefaults.standard.object(forKey: mux_stream_key) == nil
             //            {
             //                self.serverCallModel.getMuxData()
