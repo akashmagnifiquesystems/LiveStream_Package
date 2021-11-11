@@ -2,13 +2,13 @@
 import KRProgressHUD
 import UIKit
 
-struct LiveStream_Package {
+public struct LiveStream_Package {
     
    
-    init() {
+    public init() {
     }
     
-    func getStreams(searchValue : String)
+    public func getStreams(searchValue : String)
     {
         LiveStreamViewModel.shared.getStreams(SearchValue: searchValue)
     }

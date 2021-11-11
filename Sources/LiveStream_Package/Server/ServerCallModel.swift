@@ -10,11 +10,11 @@ import Foundation
 import UIKit
 import Alamofire
 
-public struct ServerCallModel {
+struct ServerCallModel {
 
     static let shared = ServerCallModel()
 
-    public init() {
+    init() {
         
     }
     
