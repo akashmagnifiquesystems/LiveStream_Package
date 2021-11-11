@@ -25,7 +25,7 @@ class LiveStreamViewModel {
     }
     
     //MARK:- Binding data for listing
-    func getStreams(SearchValue : String)
+    func getStreams(SearchValue : String, completion: @escaping ([Livestream], [Upcomingstream]) -> Void)
     {
         KRProgressHUD.show()
         ServerCallModel.shared.getAllStreams { responseArray in
@@ -64,8 +64,9 @@ class LiveStreamViewModel {
                                                                             ls_uuid: (model.object(forKey: "ls_uuid") as! String))])
                 }
             }
-            self.liveStreamFilter(searchText: SearchValue)
+//            self.liveStreamFilter(searchText: SearchValue)
             KRProgressHUD.dismiss()
+            completion(livestreams,upcomingstreams)
             //            if UserDefaults.standard.object(forKey: mux_stream_key) == nil
             //            {
             //                self.serverCallModel.getMuxData()
