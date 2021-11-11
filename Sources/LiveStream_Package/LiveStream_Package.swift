@@ -2,7 +2,7 @@
 import KRProgressHUD
 import UIKit
 
-class LiveStream_Package {
+class LiveStream_Package : NSObject {
     
     var livestreams : [Livestream] = []
     var upcomingstreams : [Upcomingstream] = []
@@ -12,8 +12,8 @@ class LiveStream_Package {
     var trendingStreamDataCheck : Bool = false
     var newStreamDataCheck : Bool = false
     
-    init() {
-    }
+//    init() {
+//    }
     
     //MARK:- Binding data for listing
     func getStreams(SearchValue : String)
