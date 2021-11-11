@@ -66,7 +66,7 @@ class LiveStreamViewModel {
             }
 //            self.liveStreamFilter(searchText: SearchValue)
             KRProgressHUD.dismiss()
-            completion(livestreams,upcomingstreams)
+            completion(self.livestreams,self.upcomingstreams)
             //            if UserDefaults.standard.object(forKey: mux_stream_key) == nil
             //            {
             //                self.serverCallModel.getMuxData()
