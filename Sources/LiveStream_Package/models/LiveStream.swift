@@ -8,6 +8,8 @@
 import Foundation
 
 public struct Livestream {
+    public static let shared = Livestream()
+
     var title : String
     var isLivestreamActive : Bool
     var bannersUrlArray : String
