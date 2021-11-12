@@ -8,49 +8,49 @@
 import Foundation
 
 public struct Livestream {
-    var title : String
-    var isLivestreamActive : Bool
-    var bannersUrlArray : String
-    var description : String
-    var currentViewers : NSNumber
-    var timeStamp : String
-    var ls_broadcaster_primary_store : NSDictionary
-    var ls_broadcaster : NSDictionary
-    var ls_products : [LivestreamProduct]
-    var current_viewers : String
-    var ls_uuid : String
+    public var title : String
+    public var isLivestreamActive : Bool
+    public var bannersUrlArray : String
+    public var description : String
+    public var currentViewers : NSNumber
+    public var timeStamp : String
+    public var ls_broadcaster_primary_store : NSDictionary
+    public var ls_broadcaster : NSDictionary
+    public var ls_products : [LivestreamProduct]
+    public var current_viewers : String
+    public var ls_uuid : String
     
 }
 
 public struct Upcomingstream {
-    var title : String
-    var isLivestreamActive : Bool
-    var bannersUrlArray : String
-    var description : String
-    var currentViewers : NSNumber
-    var timeStamp : String
-    var ls_broadcaster_primary_store : NSDictionary
-    var ls_broadcaster : NSDictionary
-    var ls_products : [LivestreamProduct]
-    var current_viewers : String
-    var ls_uuid : String
+    public var title : String
+    public var isLivestreamActive : Bool
+    public var bannersUrlArray : String
+    public var description : String
+    public var currentViewers : NSNumber
+    public var timeStamp : String
+    public var ls_broadcaster_primary_store : NSDictionary
+    public var ls_broadcaster : NSDictionary
+    public var ls_products : [LivestreamProduct]
+    public var current_viewers : String
+    public var ls_uuid : String
 }
 
 public struct LivestreamProduct {
-    var imagesUrlArray : [String]
-    var starRating : String
-    var productAttributes : ProductAttributes
-    var description : String
-    var id : String
-    var numberOfReviews : String
-    var title : String
-    var category : String
-    var brand : String
+    public var imagesUrlArray : [String]
+    public var starRating : String
+    public var productAttributes : ProductAttributes
+    public var description : String
+    public var id : String
+    public var numberOfReviews : String
+    public var title : String
+    public var category : String
+    public var brand : String
     
 }
 
 public struct ProductAttributes {
-    var productUnitPrice : String
-    var productUnit : String
-    var productTotalQty : String
+    public var productUnitPrice : String
+    public var productUnit : String
+    public var productTotalQty : String
 }
