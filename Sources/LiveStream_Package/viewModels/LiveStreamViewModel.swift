@@ -11,7 +11,7 @@ import KRProgressHUD
 
 public class LiveStreamViewModel {
     
-    static let shared = LiveStreamViewModel()
+    public static let shared = LiveStreamViewModel()
 
     var livestreams : [Livestream] = []
     var upcomingstreams : [Upcomingstream] = []
@@ -21,7 +21,7 @@ public class LiveStreamViewModel {
     var trendingStreamDataCheck : Bool = false
     var newStreamDataCheck : Bool = false
     
-    init() {
+    public init() {
     }
     
     //MARK:- Binding data for listing
