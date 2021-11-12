@@ -96,7 +96,7 @@ public class LiveStreamViewModel {
         return prodArray
     }
     //MARK:- Live Stream Filter
-    func liveStreamFilter(searchText : String)
+    public func liveStreamFilter(searchText : String)
     {
         if searchText.count == 0
         {
