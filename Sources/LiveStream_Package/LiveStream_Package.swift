@@ -10,9 +10,9 @@ public struct LiveStream_Package {
     //MARK:- get all stream
     public func getStreams(completion: @escaping (NSArray) -> Void)
     {
-        LiveStreamViewModel.shared.getStreams(completion: {responseArray in
-            completion(responseArray)
-        })
+//        LiveStreamViewModel.shared.getStreams(completion: {responseArray in
+//            completion(responseArray)
+//        })
     }
     
 }
