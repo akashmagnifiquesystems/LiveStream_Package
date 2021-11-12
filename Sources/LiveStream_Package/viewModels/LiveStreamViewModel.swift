@@ -12,7 +12,7 @@ import KRProgressHUD
 public class LiveStreamViewModel {
     
     public static let shared = LiveStreamViewModel()
-
+    
     var livestreams : [Livestream] = []
     var upcomingstreams : [Upcomingstream] = []
     var filteredLivestreams : [Livestream] = []
@@ -30,7 +30,6 @@ public class LiveStreamViewModel {
         KRProgressHUD.show()
         ServerCallModel.shared.getAllStreams { responseArray in
             KRProgressHUD.dismiss()
-//            completion(responseArray)
             self.livestreams = []
             self.upcomingstreams = []
             
@@ -64,13 +63,8 @@ public class LiveStreamViewModel {
                                                                             ls_uuid: (model.object(forKey: "ls_uuid") as! String))])
                 }
             }
-//            self.liveStreamFilter(filterString: searchText)
             completion(self.livestreams, self.upcomingstreams)
         }
-//        if UserDefaults.standard.object(forKey: mux_stream_key) == nil
-//        {
-//            self.mainViewModel.getMuxData()
-//        }
     }
     
     func filterProductData(productArray : NSArray) -> [LivestreamProduct]
