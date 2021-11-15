@@ -16,7 +16,6 @@ struct ServerCallModel {
     static let shared = ServerCallModel()
 
     init() {
-        
     }
     
     //MARK:- Fetch all streams API Call
