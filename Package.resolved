@@ -27,6 +27,15 @@
           "revision": "265142816d8f8ea93840accaf4ac7c49998e77c2",
           "version": "3.4.7"
         }
+      },
+      {
+        "package": "Mux_Package",
+        "repositoryURL": "https://github.com/akashmagnifiquesystems/Mux_Package.git",
+        "state": {
+          "branch": null,
+          "revision": "5472648102c92fe735cd8bba81f71ee0cbb25a3d",
+          "version": "1.0.1"
+        }
       }
     ]
   },

@@ -63,6 +63,10 @@ public class LiveStreamViewModel {
                                                                             ls_uuid: (model.object(forKey: "ls_uuid") as! String))])
                 }
             }
+            if UserDefaults.standard.object(forKey: "mux_stream_key") == nil
+            {
+                self.mainViewModel.getMuxData()
+            }
             completion(self.livestreams, self.upcomingstreams)
         }
     }

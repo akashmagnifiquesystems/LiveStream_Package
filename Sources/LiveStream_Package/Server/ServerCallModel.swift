@@ -31,4 +31,18 @@ struct ServerCallModel {
                 }
             }
     }
+    
+    func getMuxData()
+    {
+        let mux = Mux_Package()
+        mux.createLiveStreamingCall { response in
+            print("Mux Data=======", response)
+            let responseObject = (response.object(forKey: "data") as! NSDictionary)
+            UserDefaultsConstants.shared.saveToUserDefault(value: (responseObject.object(forKey: "stream_key") as! String), Key: "mux_stream_key")
+            UserDefaultsConstants.shared.saveToUserDefault(value: (responseObject.object(forKey: "id") as! String), Key: "mux_broadcaster_id")
+            
+            let playbackId = (((responseObject.object(forKey: "playback_ids") as! NSArray).object(at: 0) as! NSDictionary).object(forKey: "id") as! String)
+            UserDefaultsConstants.shared.saveToUserDefault(value: playbackId, Key: "mux_playback_id")
+        }
+    }
 }
