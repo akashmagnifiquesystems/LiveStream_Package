@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "LiveStream_Package",
     platforms: [
-            .macOS(.v10_10), .iOS(.v12), .tvOS(.v12)
+            .macOS(.v10_12), .iOS(.v12), .tvOS(.v12)
         ],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.

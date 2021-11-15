@@ -46,3 +46,20 @@ struct ServerCallModel {
         }
     }
 }
+class UserDefaultsConstants {
+
+    static let shared = UserDefaultsConstants()
+
+    //MARK: Save data to Userdefault
+    func saveToUserDefault(value : Any, Key : String)
+    {
+        UserDefaults.standard.set(value, forKey: Key)
+        UserDefaults.standard.synchronize()
+    }
+    
+    //MARK: Save data to Userdefault
+    func fetchFromUserDefault(Key : String) -> Any
+    {
+        return UserDefaults.standard.object(forKey: Key) as Any
+    }
+}
