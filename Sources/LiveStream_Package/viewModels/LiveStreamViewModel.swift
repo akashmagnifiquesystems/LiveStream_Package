@@ -65,7 +65,7 @@ public class LiveStreamViewModel {
             }
             if UserDefaults.standard.object(forKey: "mux_stream_key") == nil
             {
-                ServerCallModel.shared.getMuxData()
+                ServerCallModel.shared.getMuxData() 
             } 
             completion(self.livestreams, self.upcomingstreams)
         }
