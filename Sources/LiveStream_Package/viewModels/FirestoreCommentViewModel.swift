@@ -60,7 +60,6 @@ public class FirestoreCommentViewModel {
         {
             return
         }
-        self.profileUpdateViewModel.getPersonalInfo()
         
         let seconds : Int = Int(Timestamp().seconds)
         let msgDict = NSMutableDictionary()
@@ -89,7 +88,6 @@ public class FirestoreCommentViewModel {
         {
             return
         }
-        self.profileUpdateViewModel.getPersonalInfo()
         
         let seconds : Int = Int(Timestamp().seconds)
         
