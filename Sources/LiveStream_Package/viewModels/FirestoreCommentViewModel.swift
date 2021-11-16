@@ -54,7 +54,7 @@ public class FirestoreCommentViewModel {
     }
     
     //MARK:- Send Comment
-    func sendCommentBySelf(commentTxt : String, avtarName : String)
+    public func sendCommentBySelf(commentTxt : String, avtarName : String)
     {
         if commentTxt.count == 0
         {
@@ -83,7 +83,7 @@ public class FirestoreCommentViewModel {
     }
     
     //MARK:- Send Comment by customer
-    func sendCommentByCustomer(commentTxt : String, avtarName : String)
+    public func sendCommentByCustomer(commentTxt : String, avtarName : String)
     {
         if commentTxt.count == 0
         {
