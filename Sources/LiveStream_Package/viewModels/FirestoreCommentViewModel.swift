@@ -46,11 +46,67 @@ public class FirestoreCommentViewModel {
                     
                 }
                 DispatchQueue.main.async {
-                    completion(commentArray)
+                    completion(self.commentArray)
                 }
             }
             
         })
     }
-
+    
+    //MARK:- Send Comment
+    func sendCommentBySelf(commentTxt : String, avtarName : String)
+    {
+        if commentTxt.count == 0
+        {
+            return
+        }
+        self.profileUpdateViewModel.getPersonalInfo()
+        
+        let seconds : Int = Int(Timestamp().seconds)
+        let msgDict = NSMutableDictionary()
+        msgDict.setValue(commentTxt, forKey: "comment")
+        
+        msgDict.setValue((UserDefaultsConstants.shared.fetchFromUserDefault(Key: "firestoreUniqueID") as! String), forKey: "sender_uuid")
+        msgDict.setValue((UserDefaultsConstants.shared.fetchFromUserDefault(Key: "streamLiveUserID") as! String), forKey: "receiver_uuid")
+        
+        msgDict.setValue(String(format: "%ld", seconds), forKey: "timestamp")
+        
+        msgDict.setValue((UserDefaultsConstants.shared.fetchFromUserDefault(Key: "streamLiveUserProfilePic") as? String ?? ""), forKey: "receiver_image")
+        
+        msgDict.setValue((UserDefaultsConstants.shared.fetchFromUserDefault(Key: "profilePicURL") as? String ?? ""), forKey: "sender_image")
+        
+        msgDict.setValue((UserDefaultsConstants.shared.fetchFromUserDefault(Key: "streamLiveUserName") as? String ?? ""), forKey: "receiver_username")
+        
+        msgDict.setValue(avtarName, forKey: "sender_username")
+        
+        self.db.collection(path).addDocument(data: msgDict as! [String : Any])
+    }
+    
+    //MARK:- Send Comment by customer
+    func sendCommentByCustomer(commentTxt : String, avtarName : String)
+    {
+        if commentTxt.count == 0
+        {
+            return
+        }
+        self.profileUpdateViewModel.getPersonalInfo()
+        
+        let seconds : Int = Int(Timestamp().seconds)
+        
+        let msgDict = NSMutableDictionary()
+        msgDict.setValue(commentTxt, forKey: "comment")
+        
+        msgDict.setValue((UserDefaultsConstants.shared.fetchFromUserDefault(Key: "firestoreUniqueID") as! String), forKey: "sender_uuid")
+        msgDict.setValue((UserDefaultsConstants.shared.fetchFromUserDefault(Key: "streamLiveUserID") as! String), forKey: "receiver_uuid")
+        
+        msgDict.setValue(String(format: "%ld", seconds), forKey: "timestamp")
+        
+        msgDict.setValue((UserDefaultsConstants.shared.fetchFromUserDefault(Key: "streamLiveUserProfilePic") as? String ?? ""), forKey: "receiver_image")
+        msgDict.setValue((UserDefaultsConstants.shared.fetchFromUserDefault(Key: "profilePicURL") as? String ?? ""), forKey: "sender_image")
+        
+        msgDict.setValue((UserDefaultsConstants.shared.fetchFromUserDefault(Key: "streamLiveUserName") as? String ?? ""), forKey: "receiver_username")
+        msgDict.setValue(avtarName, forKey: "sender_username")
+        
+        self.db.collection(path).addDocument(data: msgDict as! [String : Any])
+    }
 }

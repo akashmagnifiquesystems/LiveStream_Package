@@ -22,6 +22,18 @@ public struct LiveStream_Package {
             completion(commetsArray)
         }
     }
+    
+    //MARK:- Send Comment
+    public func sendCommentBySelf(commentTxt : String, avtarName : String)
+    {
+        FirestoreCommentViewModel.shared.sendCommentBySelf(commentTxt: commentTxt, avtarName: avtarName)
+    }
+
+    //MARK:- Send Comment by Customer
+    public func sendCommentByCustomer(commentTxt : String, avtarName : String)
+    {
+        FirestoreCommentViewModel.shared.sendCommentByCustomer(commentTxt: commentTxt, avtarName: avtarName)
+    }
 
     
 }
