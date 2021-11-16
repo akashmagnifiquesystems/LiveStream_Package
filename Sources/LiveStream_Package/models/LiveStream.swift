@@ -54,3 +54,13 @@ public struct ProductAttributes {
     public var productUnit : String
     public var productTotalQty : String
 }
+public struct Comments {
+    public var comment : String
+    public var receiver_image : String
+    public var receiver_username : String
+    public var receiver_uuid : String
+    public var sender_image : String
+    public var sender_username : String
+    public var sender_uuid : String
+    public var timeStamp : String
+}

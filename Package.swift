@@ -17,6 +17,11 @@ let package = Package(
     dependencies: [
         // Dependencies declare other packages that this package depends on.
         // .package(url: /* package url */, from: "1.0.0"),
+        .package(
+            name: "Firebase",
+            url: "https://github.com/firebase/firebase-ios-sdk.git",
+            .upToNextMajor(from: "8.7.0")
+          ),
         .package(url: "https://github.com/Alamofire/Alamofire.git", from: "5.4.3"),
         .package(url: "https://github.com/krimpedance/KRProgressHUD.git", from: "3.4.7"),
         .package(url: "https://github.com/akashmagnifiquesystems/Mux_Package.git", from: "1.0.1")
@@ -27,7 +32,12 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "LiveStream_Package",
-            dependencies: ["Alamofire","KRProgressHUD",
+            dependencies: [   .product(name: "FirebaseAuth", package: "Firebase"),
+                              .product(name: "FirebaseDatabase", package: "Firebase"),
+                              .product(name: "FirebaseFirestore", package: "Firebase"),
+                              .product(name: "FirebaseStorage", package: "Firebase"),
+                              .product(name: "FirebaseMessaging", package: "Firebase")
+                              ,"Alamofire","KRProgressHUD",
             ]),
         .testTarget(
             name: "LiveStream_PackageTests",

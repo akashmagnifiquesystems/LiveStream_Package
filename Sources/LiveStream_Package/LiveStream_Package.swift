@@ -15,4 +15,13 @@ public struct LiveStream_Package {
         })
     }
     
+    //MARK:- get all comments streamwise
+    public func getAllCommentsByStream(roomID: String, completion: @escaping ([Comments]) -> Void)
+    {
+        FirestoreCommentViewModel.shared.getCommentList(roomID: roomID) { commetsArray in
+            completion(commetsArray)
+        }
+    }
+
+    
 }
